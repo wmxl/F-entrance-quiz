@@ -8,7 +8,10 @@ class Welcome extends React.Component {
     super(props);
     this.state = {
       students: '',
+      value: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
@@ -23,12 +26,35 @@ class Welcome extends React.Component {
     this.id = id;
   }
 
-  addStudent = () => {
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  async handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+
+    const newStudent = this.state.value;
+
+    // const api = 'http://localhost:8080/students';
+    //
+    // await axios.post(api, newStudent);
+
+
+    event.preventDefault();
+    this.componentDidMount();
+  }
+
+  async addStudent() {
     console.log(this.state.students)
     let newStudents = this.state.students;
     const student = new this.Student(16,"新学员")
     newStudents.push(student);
-    this.setState({ students: newStudents});
+
+
+    this.componentDidMount();
+    // const api = 'http://localhost:8080/students';
+    // const students = await axios.get(api).then((stu) => stu.data);
+    // this.setState({ students });
   }
 
   renderStudent = (students) => {
@@ -48,7 +74,11 @@ class Welcome extends React.Component {
       <div>
         <h3>学员列表</h3>
         <div>{this.renderStudent(students)}</div>
-        <button onClick={this.addStudent}>添加学员</button>
+
+        <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
