@@ -38,53 +38,131 @@ class Groups extends React.Component {
 
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < students.length; i++) {
-      if (students.id % 6 === 1) {
-        list1.add(students[i]);
+      const stu = students[i];
+      if (stu.id % 6 === 1) {
+        list1.push(stu);
       }
-      if (students.id % 6 === 2) {
-        list2.add(students[i]);
+      if (stu.id % 6 === 2) {
+        list2.push(stu);
       }
-      if (students.id % 6 === 3) {
-        list3.add(students[i]);
+      if (stu.id % 6 === 3) {
+        list3.push(stu);
       }
-      if (students.id % 6 === 4) {
-        list4.add(students[i]);
+      if (stu.id % 6 === 4) {
+        list4.push(stu);
       }
-      if (students.id % 6 === 5) {
-        list5.add(students[i]);
+      if (stu.id % 6 === 5) {
+        list5.push(stu);
       }
-      if (students.id % 6 === 6) {
-        list6.add(students[i]);
+      if (stu.id % 6 === 0) {
+        list6.push(stu);
       }
     }
-    const list = [list1, list2, list3, list4, list6];
+    const list = [list1, list2, list3, list4, list5, list6];
     return list;
   };
 
   render() {
-    const { list } = this.groupStudent(this.state.students);
-    console.log(list);
-    // const { students } = this.state;
+    const list = this.groupStudent(this.state.students);
     return (
       <div>
         <h3>学员分组</h3>
+        <table>
+          <tr>
+            <th>1组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[0]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <th>2组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[1]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <th>3组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[2]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <th>4组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[3]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <th>5组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[4]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <th>6组</th>
+          </tr>
+          <tr>
+            <td>
+              {[...list[5]].map((stu) => (
+                <span key={stu.id}>
+                  {stu.id}.{stu.name}
+                </span>
+              ))}
+            </td>
+          </tr>
+        </table>
+
         <div className="cation-content">
           <div className="cation-middle">
             <p>分组列表</p>
             <dl className="cation-list">
               <dt>组1</dt>
               <dd>
-                <span name="mode" className="all on">
-                  张一
-                </span>
+                {[...list[0]].map((stu) => (
+                  <span key={stu.id}>
+                    {stu.id}.{stu.name}
+                  </span>
+                ))}
               </dd>
             </dl>
             <dl className="cation-list">
               <dt>组2</dt>
               <dd>
-                <span name="mode" className="all on">
-                  张二
-                </span>
+                {[...list[1]].map((stu) => (
+                  <span key={stu.id}>
+                    {stu.id}.{stu.name}
+                  </span>
+                ))}
               </dd>
             </dl>
             <dl className="cation-list">
@@ -116,16 +194,6 @@ class Groups extends React.Component {
               <dd>
                 <span name="mode" className="all on">
                   张六
-                </span>
-              </dd>
-            </dl>
-          </div>
-          <div className="cation-middle">
-            <p>学员列表</p>
-            <dl className="cation-list">
-              <dd>
-                <span name="mode" className="all on">
-                  张六1
                 </span>
               </dd>
             </dl>
