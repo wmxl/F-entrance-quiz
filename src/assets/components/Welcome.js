@@ -12,28 +12,9 @@ class Welcome extends React.Component {
   }
 
   async componentDidMount() {
-    const data = await axios.get('http://localhost:8080/hello');
+    const hello = await axios.get('http://localhost:8080/hello');
 
-    // axios.get(api)
-    this.setState({ data });
-
-    // .then((response)=> {
-    //
-    //           // handle success
-    //
-    //           console.log(response.data);
-    //
-    //   const tempData = response.data
-    //
-    //   this.setState({
-    //     welcome_list:tempData
-    //   })
-    //         })
-    //
-    // .catch(function (error) {
-    //           // handle error
-    //           console.log(error);
-    // })
+    this.setState({ data: hello.data });
   }
 
   render() {
