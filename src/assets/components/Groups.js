@@ -84,7 +84,6 @@ class Groups extends React.Component {
       <div>
         <h3>学员分组</h3>
         {/* eslint-disable-next-line react/button-has-type */}
-        {/* <button onClick={this.groupStudent()}> </button> */}
         <button onClick={this.groupStudent}>分组学员</button>
         <table>
           <tr>

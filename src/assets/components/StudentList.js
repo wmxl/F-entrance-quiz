@@ -17,6 +17,10 @@ class Welcome extends React.Component {
     this.setState({ students });
   }
 
+  addStudent = () => {
+
+  }
+
   renderStudent = (students) => {
     return [...students].map((stu) => (
       <div key={stu.id}>
@@ -34,6 +38,7 @@ class Welcome extends React.Component {
       <div>
         <h3>学员列表</h3>
         <div>{this.renderStudent(students)}</div>
+        <button onClick={this.addStudent}>添加学员</button>
       </div>
     );
   }
