@@ -18,13 +18,11 @@ class Welcome extends React.Component {
     const api = 'http://localhost:8080/students';
     const students = await axios.get(api).then((stu) => stu.data);
     this.setState({ students });
-    console.log("componentDidMount")
   }
 
   function
-  Student(id, name) {
+  Student(name) {
     this.name = name;
-    this.id = id;
   }
 
   handleChange(event) {
@@ -32,33 +30,15 @@ class Welcome extends React.Component {
   }
 
   async handleSubmit(event) {
-    console.log("handleSubmit");
-    // alert('A name was submitted: ' + this.state.name);
-
-    const name = this.state.name;
 
     const api = 'http://localhost:8080/add';
-
-    console.log(name);
-    const stu = new this.Student(17,name);
+    const name = this.state.name;
+    const stu = new this.Student(name);
     await axios.post(api, stu);
 
-
     event.preventDefault();
-    this.componentDidMount();
-  }
-
-  async addStudent() {
-    console.log(this.state.students)
-    let newStudents = this.state.students;
-    const student = new this.Student(16,"新学员")
-    newStudents.push(student);
-
 
     this.componentDidMount();
-    // const api = 'http://localhost:8080/students';
-    // const students = await axios.get(api).then((stu) => stu.data);
-    // this.setState({ students });
   }
 
   renderStudent = (students) => {
