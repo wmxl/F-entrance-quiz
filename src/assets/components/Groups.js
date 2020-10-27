@@ -8,6 +8,18 @@ class Groups extends React.Component {
     super(props);
     this.state = {
       students: '',
+      // eslint-disable-next-line react/no-unused-state
+      list1:[],
+      // eslint-disable-next-line react/no-unused-state
+      list2:[],
+      // eslint-disable-next-line react/no-unused-state
+      list3:[],
+      // eslint-disable-next-line react/no-unused-state
+      list4:[],
+      // eslint-disable-next-line react/no-unused-state
+      list5:[],
+      // eslint-disable-next-line react/no-unused-state
+      list6:[]
     };
   }
 
@@ -28,7 +40,7 @@ class Groups extends React.Component {
     ));
   };
 
-  groupStudent = (students) => {
+  groupStudent = () => {
     const list1 = [];
     const list2 = [];
     const list3 = [];
@@ -36,6 +48,7 @@ class Groups extends React.Component {
     const list5 = [];
     const list6 = [];
 
+    const {students} = this.state;
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < students.length; i++) {
       const stu = students[i];
@@ -58,22 +71,28 @@ class Groups extends React.Component {
         list6.push(stu);
       }
     }
-    const list = [list1, list2, list3, list4, list5, list6];
-    return list;
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ list1, list2, list3, list4, list5, list6});
+    // const list = [list1, list2, list3, list4, list5, list6];
+    // return list;
   };
 
   render() {
-    const list = this.groupStudent(this.state.students);
+    // const list = this.groupStudent(this.state.students);
+    const { list1, list2, list3, list4, list5, list6} = this.state;
     return (
       <div>
         <h3>学员分组</h3>
+        {/* eslint-disable-next-line react/button-has-type */}
+        {/* <button onClick={this.groupStudent()}> </button> */}
+        <button onClick={this.groupStudent}>分组学员</button>
         <table>
           <tr>
             <th>1组</th>
           </tr>
           <tr>
             <td>
-              {[...list[0]].map((stu) => (
+              {[...list1].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -85,7 +104,7 @@ class Groups extends React.Component {
           </tr>
           <tr>
             <td>
-              {[...list[1]].map((stu) => (
+              {[...list2].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -97,7 +116,7 @@ class Groups extends React.Component {
           </tr>
           <tr>
             <td>
-              {[...list[2]].map((stu) => (
+              {[...list3].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -109,7 +128,7 @@ class Groups extends React.Component {
           </tr>
           <tr>
             <td>
-              {[...list[3]].map((stu) => (
+              {[...list4].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -121,7 +140,7 @@ class Groups extends React.Component {
           </tr>
           <tr>
             <td>
-              {[...list[4]].map((stu) => (
+              {[...list5].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -133,7 +152,7 @@ class Groups extends React.Component {
           </tr>
           <tr>
             <td>
-              {[...list[5]].map((stu) => (
+              {[...list6].map((stu) => (
                 <span key={stu.id}>
                   {stu.id}.{stu.name}
                 </span>
@@ -141,64 +160,6 @@ class Groups extends React.Component {
             </td>
           </tr>
         </table>
-
-        <div className="cation-content">
-          <div className="cation-middle">
-            <p>分组列表</p>
-            <dl className="cation-list">
-              <dt>组1</dt>
-              <dd>
-                {[...list[0]].map((stu) => (
-                  <span key={stu.id}>
-                    {stu.id}.{stu.name}
-                  </span>
-                ))}
-              </dd>
-            </dl>
-            <dl className="cation-list">
-              <dt>组2</dt>
-              <dd>
-                {[...list[1]].map((stu) => (
-                  <span key={stu.id}>
-                    {stu.id}.{stu.name}
-                  </span>
-                ))}
-              </dd>
-            </dl>
-            <dl className="cation-list">
-              <dt>组3</dt>
-              <dd>
-                <span name="mode" className="all on">
-                  张三
-                </span>
-              </dd>
-            </dl>
-            <dl className="cation-list">
-              <dt>组4</dt>
-              <dd>
-                <span name="mode" className="all on">
-                  张四
-                </span>
-              </dd>
-            </dl>
-            <dl className="cation-list">
-              <dt>组5</dt>
-              <dd>
-                <span name="mode" className="all on">
-                  张五
-                </span>
-              </dd>
-            </dl>
-            <dl className="cation-list">
-              <dt>组6</dt>
-              <dd>
-                <span name="mode" className="all on">
-                  张六
-                </span>
-              </dd>
-            </dl>
-          </div>
-        </div>
       </div>
     );
   }
