@@ -17,8 +17,18 @@ class Welcome extends React.Component {
     this.setState({ students });
   }
 
-  addStudent = () => {
+  function
+  Student(id, name) {
+    this.name = name;
+    this.id = id;
+  }
 
+  addStudent = () => {
+    console.log(this.state.students)
+    let newStudents = this.state.students;
+    const student = new this.Student(16,"新学员")
+    newStudents.push(student);
+    this.setState({ students: newStudents});
   }
 
   renderStudent = (students) => {
