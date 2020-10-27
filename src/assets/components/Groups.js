@@ -40,6 +40,18 @@ class Groups extends React.Component {
     ));
   };
 
+  function
+  shuffle(arr) {
+    var len = arr.length;
+    for (var i = 0; i < len - 1; i++) {
+      var index = parseInt(Math.random() * (len - i));
+      var temp = arr[index];
+      arr[index] = arr[len - i - 1];
+      arr[len - i - 1] = temp;
+    }
+    return arr;
+  }
+
   groupStudent = () => {
     const list1 = [];
     const list2 = [];
@@ -48,7 +60,8 @@ class Groups extends React.Component {
     const list5 = [];
     const list6 = [];
 
-    const {students} = this.state;
+    let {students} = this.state;
+    students = this.shuffle(students);
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < students.length; i++) {
       const stu = students[i];
@@ -73,12 +86,10 @@ class Groups extends React.Component {
     }
     // eslint-disable-next-line react/no-unused-state
     this.setState({ list1, list2, list3, list4, list5, list6});
-    // const list = [list1, list2, list3, list4, list5, list6];
-    // return list;
   };
 
   render() {
-    // const list = this.groupStudent(this.state.students);
+
     const { list1, list2, list3, list4, list5, list6} = this.state;
     return (
       <div>
