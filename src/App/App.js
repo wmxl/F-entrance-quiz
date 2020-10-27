@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Welcome from '../assets/components/Welcome';
+import Groups from '../assets/components/Groups';
 import StudentList from '../assets/components/StudentList';
 
 class App extends Component {
   render() {
     return (
       <div data-testid="app" className="App">
-        Hello World
-        <Welcome />
+        <Groups />
         <StudentList />
       </div>
     );
