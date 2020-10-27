@@ -14,7 +14,6 @@ class Welcome extends React.Component {
   async componentDidMount() {
     const api = 'http://localhost:8080/students';
     const students = await axios.get(api).then((stu) => stu.data);
-    console.log(students);
     this.setState({ students });
   }
 
